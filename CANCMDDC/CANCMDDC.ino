@@ -320,12 +320,12 @@
 #define OLED_DISPLAY  0 // set to 0 if 128x32 OLED display is not present
 #define LCD_DISPLAY   1 // set to 0 if 4x20 char LCD display is not present
 #define KEYPAD        0 // set to 0 if 4x3 keypad is not present
-#define KEYPAD44      1 // set to 0 if 4x4 keypad is not present
+#define KEYPAD44      0 // set to 0 if 4x4 keypad is not present
 #define CANBUS        1 // set to 0 if CAN h/w is not present
 #define HALL_EFFECT   1  // set to 0 if Hall Effect current detection is not present.
 #define CBUS_EVENTS   1  // set to 0 if CBUS events are supressed
 
-#define USE_CBUSBUZZER 0 // set to 0 if CBUSBUZZER library is not present
+#define USE_CBUSBUZZER 1 // set to 0 if CBUSBUZZER library is not present
 #if USE_CBUSBUZZER
 #include <CBUSBUZZER.h>              // CBUS Buzzer
 #endif
@@ -362,7 +362,7 @@ MyKeyboardListener myListener;
 
 
 // Set this to 0 for the other hardware options
-#define LINKSPRITE 1  // Defined to use Linksprite Motor Shield
+#define LINKSPRITE 1 // Defined to use Linksprite Motor Shield
 #define L298N      1  // Linksprite modified with L298N output board
 
 
@@ -446,13 +446,13 @@ const byte opcodes[] PROGMEM = {OPC_ACON, OPC_ACOF, OPC_BON, OPC_ARST, 0x08, 0x0
 /* Pins used by SPI interface to CAN module */
 /* These are the  values for the MEGA2560 */
 #define CHIPSELECT  53
-#define CBUSINTPIN  18 // 49
+#define CBUSINTPIN  19 // 49
 
 #if LINKSPRITE
 // Module pins defined here - these are not the CBUS pins.
-const byte MODULE_LED_PIN    = 4;        // Module LED Pin using Green Pin
-const byte MODULE_SWITCH_PIN = 3;        // Module Switch Pin
-const byte MODULE_SOUNDER    = 7;        // Module buzzer pin
+const byte MODULE_LED_PIN    = 5;        // Module LED Pin using Green Pin
+const byte MODULE_SWITCH_PIN = 6;        // Module Switch Pin
+const byte MODULE_SOUNDER    = 4;        // Module buzzer pin
 
 // 
 // This is a problem as at the moment 5 and 6 are used for the
@@ -490,7 +490,7 @@ static int pwmpins[] = {
 #define SOUNDER     4
 #define SWITCH      8
 
-#define NUM_CONTROLLERS  5 // the number of controllers (pairs of pwmpins)
+#define NUM_CONTROLLERS  2 // the number of controllers (pairs of pwmpins)
 /*
  * The following are the PWM outputs used to drive the tracks.
  *
@@ -528,7 +528,7 @@ static byte keypins[] = {
 #define overloadLED  A2 // used as digital output
 #define overloadDetect A7 // used for analogue input
 
-#define MAXCURRENT  50 // 50 is approximately 1 Amp. Maximum value 250ish
+#define MAXCURRENT  25 // 50 is approximately 1 Amp. Maximum value 250ish
 
 int currentDetectQuiescent = 0;
 int currentDetected;
